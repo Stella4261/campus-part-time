@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campus.parttime.mapper.EmployerMapper">
+    <select id="selectByUserId" resultType="com.campus.parttime.entity.Employer">
+        select * from employer where user_id = #{userId}
+    </select>
+    <insert id="insertEmployer">
+        insert into employer(user_id,company_name,contact_name,industry,address,description,verify_status)
+        values(#{userId},#{companyName},#{contactName},#{industry},#{address},#{description},#{verifyStatus})
+    </insert>
+    <update id="updateEmployer">
+        update employer set company_name=#{companyName},contact_name=#{contactName},industry=#{industry},address=#{address},description=#{description},verify_status=#{verifyStatus} where id=#{id}
+    </update>
+</mapper>

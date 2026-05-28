@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campus.parttime.mapper.JobMapper">
+    <select id="selectAvailableJobs" resultType="com.campus.parttime.entity.Job">
+        select * from job where status=1
+    </select>
+    <select id="selectJobById" resultType="com.campus.parttime.entity.Job">
+        select * from job where id=#{id}
+    </select>
+    <select id="selectJobsByEmployerId" resultType="com.campus.parttime.entity.Job">
+        select * from job where employer_id=#{employerId}
+    </select>
+    <insert id="insertJob">
+        insert into job(employer_id,category_id,title,description,requirement,salary,salary_type,location,headcount,work_time,deadline,status)
+        values(#{employerId},#{categoryId},#{title},#{description},#{requirement},#{salary},#{salaryType},#{location},#{headcount},#{workTime},#{deadline},#{status})
+    </insert>
+    <update id="updateJob">
+        update job set category_id=#{categoryId},title=#{title},description=#{description},requirement=#{requirement},salary=#{salary},salary_type=#{salaryType},location=#{location},headcount=#{headcount},work_time=#{workTime},deadline=#{deadline},status=#{status} where id=#{id}
+    </update>
+    <delete id="deleteJob">
+        delete from job where id=#{id}
+    </delete>
+</mapper>

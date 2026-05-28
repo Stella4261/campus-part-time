@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campus.parttime.mapper.StudentMapper">
+    <select id="selectByUserId" resultType="com.campus.parttime.entity.Student">
+        select * from student where user_id = #{userId}
+    </select>
+    <insert id="insertStudent">
+        insert into student(user_id,real_name,student_no,school,major,grade,resume)
+        values(#{userId},#{realName},#{studentNo},#{school},#{major},#{grade},#{resume})
+    </insert>
+    <update id="updateStudent">
+        update student set real_name=#{realName},student_no=#{studentNo},school=#{school},major=#{major},grade=#{grade},resume=#{resume} where id=#{id}
+    </update>
+</mapper>
